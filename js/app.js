@@ -1,27 +1,28 @@
 /*-- PSEUDOCODE - US GEOGRAPHY MATCHING GAME --*/
-// === DATA ===
-// Create array with all 50 states containing name, abbreviation, and capital
-// Track: selected category, current round, timer, wrong guesses, selections, matched pairs
+/*
+MVP - US GEOGRAPHY MATCHING GAME
 
-// === FLOW ===
+DATA:
+- 50 states array
+- Selected category
+- Timer: 30 seconds
+- Max wrong guesses: 3
 
-// 1. Show category selection screen (abbreviations or capitals)
-// 2. Player selects category
-// 3. Shuffle states array and start timer
-// 4. Display 5 pairs for current round (left column: states, right column: shuffled answers)
-// 5. Player clicks first item - highlight it
-// 6. Player clicks second item - check if they match
-// 7. If match: mark both as matched, check if round complete
-// 8. If no match: show error, reset selections after delay
-// 9. If 5 pairs matched: show "Next Round" button
-// 10. Load next 5 pairs and repeat until all 10 rounds done
-// 11. Win if all 50 pairs matched within 5 minutes
-// 12. Lose if timer hits 0 or 10 wrong guesses
-// 13. Show win/lose screen with stats and replay option
+FLOW:
+1. Choose category (abbreviations/capitals)
+2. Randomly pick 5 states from 50
+3. Display 5 pairs (left: states, right: shuffled answers)
+4. Start 30-second timer
+5. Player clicks to match
+6. If correct: mark matched
+7. If wrong: increment error counter
+8. Win: All 5 matched before time ends
+9. Lose: Timer = 0 OR 3 wrong guesses
+10. Play Again: reset with new random 5
 
-
-
-
+WIN: Match all 5 pairs within 30 seconds
+LOSE: Time out OR 3 errors
+*/
 
 
 /*-------------- Constants -------------*/
