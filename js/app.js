@@ -93,15 +93,23 @@ function render() {
         categoryScreen.style.display = 'none';
         gameBoard.style.display = 'block';
         resultsScreen.style.display = 'none';
+
         leftColumn.innerHTML = '';
         rightColumn.innerHTML = '';
+
+        currentStates.forEach(state => {
+            const leftItem = document.createElement('div');
+            leftItem.textContent = state.name;
+            leftColumn.appendChild(leftItem);
+        })
+
     } else {
         categoryScreen.style.display = 'none';
         gameBoard.style.display = 'none';
         resultsScreen.style.display = 'block';
     }
 
-   
+
 }
 
 function handleAbbreviationsClick() {
