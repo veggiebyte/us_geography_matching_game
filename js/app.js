@@ -94,37 +94,35 @@ function render() {
         gameBoard.style.display = 'block';
         resultsScreen.style.display = 'none';
 
+
+
         leftColumn.innerHTML = '';
         rightColumn.innerHTML = '';
 
-        // First, create the shuffled right values
         const rightValues = currentStates.map(state =>
             selectedCategory === 'abbreviations' ? state.abbr : state.capital
         );
         const shuffledRight = rightValues.sort(() => Math.random() - 0.5);
 
-        // Loop 1: Create left column items
         currentStates.forEach(state => {
             const leftItem = document.createElement('div');
             leftItem.textContent = state.name;
+            leftItem.addEventListener('click', handleItemClick);
             leftColumn.appendChild(leftItem);
         });
 
-        // Loop 2: Create right column items  
         shuffledRight.forEach(value => {
             const rightItem = document.createElement('div');
             rightItem.textContent = value;
+            rightItem.addEventListener('click', handleItemClick);
             rightColumn.appendChild(rightItem);
         });
-
 
     } else {
         categoryScreen.style.display = 'none';
         gameBoard.style.display = 'none';
         resultsScreen.style.display = 'block';
     }
-
-
 }
 
 function handleAbbreviationsClick() {
@@ -144,11 +142,67 @@ function getRandomStates(num) {
     return shuffled.slice(0, num);
 }
 
+function handleItemClick() {
+    if (firstSelection === null) {
+        firstSelection = this;
+        this.style.backgroundColor = '#d0d0d0';  // Gray it out
+        return;
+    }
+
+    secondSelection = this;
+    this.style.backgroundColor = '#d0d0d0';  // Gray this one out too
+    checkMatch();
+}
+
+function checkMatch() {
+    let leftItem, rightItem;
+
+    if (firstSelection.parentElement === leftColumn) {
+        leftItem = firstSelection;
+        rightItem = secondSelection;
+    } else {
+        leftItem = secondSelection;
+        rightItem = firstSelection;
+    }
+
+    const leftText = leftItem.textContent;
+    const rightText = rightItem.textContent;
+    const state = currentStates.find(s => s.name === leftText);
+
+    let isCorrect = false;
+    if (selectedCategory === 'abbreviations') {
+        isCorrect = (rightText === state.abbr);
+    } else {
+        isCorrect = (rightText === state.capital);
+    }
+
+    if (isCorrect) {
+        firstSelection.style.backgroundColor = '#90EE90';
+        secondSelection.style.backgroundColor = '#90EE90';
+        matchedPairs++;
+
+        firstSelection = null;
+        secondSelection = null;
+        
+    } else {
+        firstSelection.style.backgroundColor = '#FFB6C1';
+        secondSelection.style.backgroundColor = '#FFB6C1';
+        wrongGuesses++;
+
+        setTimeout(() => {
+            firstSelection.style.backgroundColor = '#f0f0f0';
+            secondSelection.style.backgroundColor = '#f0f0f0';
+            firstSelection = null;
+            secondSelection = null;
+        }, 1000);
+    }
+}
+
+
 /*----------- Event Listeners ----------*/
 
 abbreviationsButton.addEventListener('click', handleAbbreviationsClick);
 capitalsButton.addEventListener('click', handleCapitalsClick);
 resetButton.addEventListener('click', init);
-
 
 init();
