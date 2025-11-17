@@ -65,6 +65,8 @@ const timer = document.getElementById('timer')
 const resetButton = document.getElementById('play-again')
 const errorsDisplay = document.getElementById('errors');
 const resultsMessage = document.getElementById('results-message');
+const leftColumn = document.getElementById('left-column');
+const rightColumn = document.getElementById('right-column');
 
 
 
@@ -91,26 +93,27 @@ function render() {
         categoryScreen.style.display = 'none';
         gameBoard.style.display = 'block';
         resultsScreen.style.display = 'none';
+        leftColumn.innerHTML = '';
+        rightColumn.innerHTML = '';
     } else {
         categoryScreen.style.display = 'none';
         gameBoard.style.display = 'none';
         resultsScreen.style.display = 'block';
     }
+
+   
 }
 
 function handleAbbreviationsClick() {
     selectedCategory = 'abbreviations';
+    currentStates = getRandomStates(5);
     render();
 }
 
 function handleCapitalsClick() {
     selectedCategory = 'capitals';
+    currentStates = getRandomStates(5);
     render();
-}
-
-function getRandomStates(num) {
-    const shuffled = allStates.sort(() => Math.random() - 0.5);
-    return shuffled.slice(0, num);
 }
 
 function getRandomStates(num) {
