@@ -26,16 +26,103 @@ LOSE: Time out OR 3 errors
 
 
 /*-------------- Constants -------------*/
+const MAX_WRONG_GUESSES = 3;
+const TIMER_START = 30;
+const PAIRS_PER_GAME = 5;
 
 
 /*---------- Variables (state) ---------*/
+let allStates = [
+    { name: "California", abbr: "CA", capital: "Sacramento" },
+    { name: "Texas", abbr: "TX", capital: "Austin" },
+    { name: "Florida", abbr: "FL", capital: "Tallahassee" },
+    { name: "New York", abbr: "NY", capital: "Albany" },
+    { name: "Illinois", abbr: "IL", capital: "Springfield" },
+    { name: "Ohio", abbr: "OH", capital: "Columbus" },
+    { name: "Georgia", abbr: "GA", capital: "Atlanta" },
+    { name: "Michigan", abbr: "MI", capital: "Lansing" },
+    { name: "Arizona", abbr: "AZ", capital: "Phoenix" },
+    { name: "Nevada", abbr: "NV", capital: "Carson City" }
+]
 
+
+let selectedCategory;
+let currentStates;
+let firstSelection;
+let secondSelection;
+let matchedPairs;
+let wrongGuesses;
+let timeRemaining;
 
 /*----- Cached Element References  -----*/
 
+const categoryScreen = document.getElementById('category-screen');
+const gameBoard = document.getElementById('game-board');
+const resultsScreen = document.getElementById('results-screen');
+const abbreviationsButton = document.getElementById('abbreviations')
+const capitalsButton = document.getElementById('capitals')
+const timer = document.getElementById('timer')
+const resetButton = document.getElementById('play-again')
+const errorsDisplay = document.getElementById('errors');
+const resultsMessage = document.getElementById('results-message');
+
+
+
 
 /*-------------- Functions -------------*/
+function init() {
+    selectedCategory = null;
+    currentStates = [];
+    firstSelection = null;
+    secondSelection = null;
+    matchedPairs = 0;
+    wrongGuesses = 0;
+    timeRemaining = 30;
 
+    render();
+}
+
+function render() {
+    if (selectedCategory === null) {
+        categoryScreen.style.display = 'block';
+        gameBoard.style.display = 'none';
+        resultsScreen.style.display = 'none';
+    } else if (selectedCategory !== null && matchedPairs < 5 && wrongGuesses < 3 && timeRemaining > 0) {
+        categoryScreen.style.display = 'none';
+        gameBoard.style.display = 'block';
+        resultsScreen.style.display = 'none';
+    } else {
+        categoryScreen.style.display = 'none';
+        gameBoard.style.display = 'none';
+        resultsScreen.style.display = 'block';
+    }
+}
+
+function handleAbbreviationsClick() {
+    selectedCategory = 'abbreviations';
+    render();
+}
+
+function handleCapitalsClick() {
+    selectedCategory = 'capitals';
+    render();
+}
+
+function getRandomStates(num) {
+    const shuffled = allStates.sort(() => Math.random() - 0.5);
+    return shuffled.slice(0, num);
+}
+
+function getRandomStates(num) {
+    const shuffled = allStates.sort(() => Math.random() - 0.5);
+    return shuffled.slice(0, num);
+}
 
 /*----------- Event Listeners ----------*/
 
+abbreviationsButton.addEventListener('click', handleAbbreviationsClick);
+capitalsButton.addEventListener('click', handleCapitalsClick);
+resetButton.addEventListener('click', init);
+
+
+init();

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,15 +9,33 @@
     <script src="js/app.js" defer></script>
 
 </head>
+
 <body>
-    <h1>US Geography Matching Game</h1>
-    <h2>Choose a Category</h2>
-     <button id="abbreviations">State Abbreviations</button>
-     <button id="capitals">State Capitals</button>
-     <div id="game"</div>
-        <div id="left-states"</div>
-        
-        
-        <div</div>
+    <div id="container">
+
+        <h1>US Geography Matching Game</h1>
+
+    <div id="category-screen">
+        <h2>Choose a Category</h2>
+        <button id="abbreviations">★ State Abbreviations ★ </button>
+        <button id="capitals">★ State Capitals ★</button>
+    </div>
+
+    <div id="game-board">
+        <div id="timer">Time: 30</div>
+        <div id="errors">Wrong: 0/3</div>
+        <div id="left-column"></div>
+        <div id="right-column"></div>
+    </div>
+
+    <div id="results-screen">
+        <h1 id="results-message">Win or Lose text</h1>
+        <button id="play-again">Play Again!</button>
+
+    </div>
+    </div>
+
+
 </body>
+
 </html>
