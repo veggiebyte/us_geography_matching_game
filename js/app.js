@@ -97,23 +97,26 @@ function render() {
         leftColumn.innerHTML = '';
         rightColumn.innerHTML = '';
 
+        // First, create the shuffled right values
+        const rightValues = currentStates.map(state =>
+            selectedCategory === 'abbreviations' ? state.abbr : state.capital
+        );
+        const shuffledRight = rightValues.sort(() => Math.random() - 0.5);
+
+        // Loop 1: Create left column items
         currentStates.forEach(state => {
             const leftItem = document.createElement('div');
             leftItem.textContent = state.name;
             leftColumn.appendChild(leftItem);
+        });
 
-
+        // Loop 2: Create right column items  
+        shuffledRight.forEach(value => {
             const rightItem = document.createElement('div');
-            if (selectedCategory === 'abbreviations') {
-                rightItem.textContent = state.abbr;
-
-            } else {
-                rightItem.textContent = state.capital;
-
-            }
+            rightItem.textContent = value;
             rightColumn.appendChild(rightItem);
+        });
 
-        })
 
     } else {
         categoryScreen.style.display = 'none';
