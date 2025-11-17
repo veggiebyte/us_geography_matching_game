@@ -101,6 +101,18 @@ function render() {
             const leftItem = document.createElement('div');
             leftItem.textContent = state.name;
             leftColumn.appendChild(leftItem);
+
+
+            const rightItem = document.createElement('div');
+            if (selectedCategory === 'abbreviations') {
+                rightItem.textContent = state.abbr;
+
+            } else {
+                rightItem.textContent = state.capital;
+
+            }
+            rightColumn.appendChild(rightItem);
+
         })
 
     } else {
