@@ -12,7 +12,7 @@ FLOW:
 1. Choose category (abbreviations/capitals)
 2. Randomly pick 5 states from 50
 3. Display 5 pairs (left: states, right: shuffled answers)
-4. Start 30-second timer
+4. Start 10-second timer
 5. Player clicks to match
 6. If correct: mark matched
 7. If wrong: increment error counter
@@ -27,7 +27,7 @@ LOSE: Time out OR 3 errors
 
 /*-------------- Constants -------------*/
 const MAX_WRONG_GUESSES = 3;
-const TIMER_START = 15;
+const TIMER_START = 10;
 const PAIRS_PER_GAME = 5;
 
 
@@ -83,7 +83,7 @@ function init() {
     secondSelection = null;
     matchedPairs = 0;
     wrongGuesses = 0;
-    timeRemaining = 15;
+    timeRemaining = 10;
 
     render();
 }
@@ -98,6 +98,8 @@ function render() {
         gameBoard.style.display = 'block';
         resultsScreen.style.display = 'none';
 
+        timer.textContent = `Time: ${timeRemaining}`;
+        errorsDisplay.textContent = `Wrong: ${wrongGuesses}/${MAX_WRONG_GUESSES}`;
 
 
         leftColumn.innerHTML = '';
@@ -127,7 +129,21 @@ function render() {
         gameBoard.style.display = 'none';
         resultsScreen.style.display = 'block';
     }
+
+    if (matchedPairs === 5) {
+        resultsMessage.textContent = '🎉 ⭐ You Win! ⭐ 🎉';
+        confetti({ shapes: ['star'] });  
+    }
+
+    else if (timeRemaining === 0) {
+        resultsMessage.textContent = "⏰ Time's Up!!! ⏰ 😔";
+    } 
+    
+    else if (wrongGuesses === 3) {
+        resultsMessage.textContent = '❌ ❌ ❌ Too Many Errors! ❌ ❌ ❌';
+    }
 }
+
 
 function handleAbbreviationsClick() {
     selectedCategory = 'abbreviations';
@@ -195,6 +211,15 @@ function checkMatch() {
         firstSelection.style.backgroundColor = '#FFB6C1';
         secondSelection.style.backgroundColor = '#FFB6C1';
         wrongGuesses++;
+        errorsDisplay.textContent = `Wrong: ${wrongGuesses}/${MAX_WRONG_GUESSES}`;
+
+        if (wrongGuesses === 3) {
+            clearInterval(timerInterval);
+            setTimeout(() => {
+                render();
+            }, 1000);
+            return;
+        }
 
         setTimeout(() => {
             firstSelection.style.backgroundColor = '#f0f0f0';
@@ -206,16 +231,16 @@ function checkMatch() {
 }
 
 function startTimer() {
-        timerInterval = setInterval(() => {
-            timeRemaining--;
-            timer.textContent = `Time: ${timeRemaining}`;
+    timerInterval = setInterval(() => {
+        timeRemaining--;
+        timer.textContent = `Time: ${timeRemaining}`;
 
-            if (timeRemaining === 0) {
-                clearInterval(timerInterval);
-                render();
-            }
-        }, 1000);
-    }
+        if (timeRemaining === 0) {
+            clearInterval(timerInterval);
+            render();
+        }
+    }, 1000);
+}
 
 
 
