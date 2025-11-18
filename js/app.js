@@ -27,7 +27,7 @@ LOSE: Time out OR 3 errors
 
 /*-------------- Constants -------------*/
 const MAX_WRONG_GUESSES = 3;
-const TIMER_START = 30;
+const TIMER_START = 15;
 const PAIRS_PER_GAME = 5;
 
 
@@ -53,6 +53,7 @@ let secondSelection;
 let matchedPairs;
 let wrongGuesses;
 let timeRemaining;
+let timerInterval;
 
 /*----- Cached Element References  -----*/
 
@@ -73,13 +74,16 @@ const rightColumn = document.getElementById('right-column');
 
 /*-------------- Functions -------------*/
 function init() {
+    if (timerInterval) {
+        clearInterval(timerInterval);
+    }
     selectedCategory = null;
     currentStates = [];
     firstSelection = null;
     secondSelection = null;
     matchedPairs = 0;
     wrongGuesses = 0;
-    timeRemaining = 30;
+    timeRemaining = 15;
 
     render();
 }
@@ -128,12 +132,14 @@ function render() {
 function handleAbbreviationsClick() {
     selectedCategory = 'abbreviations';
     currentStates = getRandomStates(5);
+    startTimer();
     render();
 }
 
 function handleCapitalsClick() {
     selectedCategory = 'capitals';
     currentStates = getRandomStates(5);
+    startTimer();
     render();
 }
 
@@ -165,6 +171,7 @@ function checkMatch() {
         rightItem = firstSelection;
     }
 
+
     const leftText = leftItem.textContent;
     const rightText = rightItem.textContent;
     const state = currentStates.find(s => s.name === leftText);
@@ -183,7 +190,7 @@ function checkMatch() {
 
         firstSelection = null;
         secondSelection = null;
-        
+
     } else {
         firstSelection.style.backgroundColor = '#FFB6C1';
         secondSelection.style.backgroundColor = '#FFB6C1';
@@ -197,6 +204,19 @@ function checkMatch() {
         }, 1000);
     }
 }
+
+function startTimer() {
+        timerInterval = setInterval(() => {
+            timeRemaining--;
+            timer.textContent = `Time: ${timeRemaining}`;
+
+            if (timeRemaining === 0) {
+                clearInterval(timerInterval);
+                render();
+            }
+        }, 1000);
+    }
+
 
 
 /*----------- Event Listeners ----------*/
