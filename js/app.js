@@ -174,7 +174,7 @@ function render() {
             confetti({ shapes: ['star'] });
 
         } else if (timeRemaining === 0) {
-            resultsMessage.textContent = "⏰ Time's Up!!! ⏰ 😔";
+            resultsMessage.textContent = "⏰ Time's Up!!! ⏰";
 
         } else if (wrongGuesses === 3) {
             resultsMessage.textContent = '❌ ❌ ❌ Too Many Errors! ❌ ❌ ❌';
