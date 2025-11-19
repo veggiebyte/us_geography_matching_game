@@ -10,7 +10,7 @@
 body {
     margin: 0;
     padding: 20px;
-    background-color: #cb1b1b;
+    background-color: rgb(206, 70, 80);
     font-family: Arial, sans-serif;
     text-align: center;
     background-image: url('../images/plate_bgd.png');
@@ -20,14 +20,27 @@ body {
 
 h1 {
     margin-bottom: 0px;
-    color: rgb(69, 154, 211);
     line-height: 1.4;
 
 }
 
+.title-main {
+    font-family: Georgia, serif;
+    font-size: 70px;
+    font-weight: bold;
+    color: rgb(47, 78, 130);
+}
+
+.title-sub {
+    font-family: 'Timmana', sans-serif;
+    font-size: 90px;
+    color: #5B8DBE
+}
+
 h2 {
+    font-size: 30px;
     margin-bottom: 15px;
-   color: rgb(47, 78, 130);
+    color: rgb(206, 70, 80);
     line-height: 1.4;
 
 }
@@ -44,14 +57,15 @@ h2 {
 }
 
 button {
-    font-size: 18px;
+    font-size: 20px;
     font-weight: bold;
-    padding: 15px 30px;
+    padding: 10px 20px;
     margin: 10px;
-    border: 2px solid rgb(47, 78, 130);
-    background-color: rgb(114, 198, 231);
+    border: 3px solid rgb(47, 78, 130);
+    background-color: rgb(47, 78, 130);
     cursor: pointer;
     border-radius: 20px;
+    color: white
 
 }
 
@@ -61,19 +75,14 @@ button:hover {
 
 }
 
-#abbreviations {
-    background-color: rgb(206, 76, 80);
-    color: rgb(219, 224, 233);
-}
-
-#capitals {
-    background-color: rgb(114, 198, 231);
-    color: rgb(47, 78, 130);
-}
 
 #play-again {
-    background-color: rgb(114, 198, 231);
-    color: rgb(47, 78, 130);
+    background-color: rgb(206, 70, 80);
+    color: white;
+    border: none;
+    margin-top: 20px;
+
+
 }
 
 #left-column,
@@ -142,7 +151,7 @@ button:hover {
     font-size: 42px;
     font-weight: normal;
     color: #00ff41;
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(160, 151, 151, 0.6);
     padding: 10px 25px;
     border-radius: 8px;
     text-align: center;
@@ -152,22 +161,12 @@ button:hover {
     display: inline-block;
 }
 
-.title-main {
-    font-family: Georgia, serif;
-    font-size: 70px;
-    font-weight: bold;
-    color: rgb(47, 78, 130);
-}
 
-.title-sub {
-    font-family: 'Timmana', sans-serif;
-    font-size: 90px;
-}
 
 #errors {
     font-size: 32px;
     font-weight: bold;
-    color: #cc0000;  /* Dark red */
+    color: #cc0000;
     padding: 10px 20px;
     margin-bottom: 15px;
 }
