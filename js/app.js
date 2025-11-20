@@ -1,29 +1,3 @@
-/*-- PSEUDOCODE - US GEOGRAPHY MATCHING GAME --*/
-/*
-MVP - US GEOGRAPHY MATCHING GAME
-
-DATA:
-- 50 states array
-- Selected category
-- Timer: 30 seconds
-- Max wrong guesses: 3
-
-FLOW:
-1. Choose category (abbreviations/capitals)
-2. Randomly pick 5 states from 50
-3. Display 5 pairs (left: states, right: shuffled answers)
-4. Start 10-second timer
-5. Player clicks to match
-6. If correct: mark matched
-7. If wrong: increment error counter
-8. Win: All 5 matched before time ends
-9. Lose: Timer = 0 OR 3 wrong guesses
-10. Play Again: reset with new random 5
-
-WIN: Match all 5 pairs within 30 seconds
-LOSE: Time out OR 3 errors
-*/
-
 
 /*-------------- Constants -------------*/
 const MAX_WRONG_GUESSES = 3;
@@ -259,7 +233,7 @@ function checkMatch() {
         firstSelection.style.backgroundColor = '#FFB6C1';
         secondSelection.style.backgroundColor = '#FFB6C1';
         wrongGuesses++;
-        errorsDisplay.textContent = `Wrong: ${wrongGuesses}/${MAX_WRONG_GUESSES}`;
+        errorsDisplay.textContent = `Wrong Answers: ${wrongGuesses}/${MAX_WRONG_GUESSES}`;
 
         if (wrongGuesses === 3) {
             clearInterval(timerInterval);

@@ -54,7 +54,7 @@ h2 {
 #container {
     max-width: 800px;
     margin: 50px auto;
-    background-color: rgb(253, 251, 251);
+    background-color: white;
     padding: 40px;
     border-radius: 25px;
     border: 10px solid rgb(206, 76, 80);
@@ -70,7 +70,6 @@ button {
     cursor: pointer;
     border-radius: 20px;
     color: white
-
 }
 
 button:hover {
@@ -146,7 +145,7 @@ button:hover {
 }
 
 .usa-graphic img {
-    max-width: 400px;
+    max-width: 500px;
     height: auto;
 }
 
@@ -164,7 +163,7 @@ button:hover {
     letter-spacing: 4px;
     border: 6px solid rgb(47, 78, 130);
     outline: 1px solid white;
-    outline-offset: -5px;  
+    outline-offset: -5px;
     display: inline-block;
 }
 
