@@ -1,8 +1,17 @@
 
 /*-------------- Constants -------------*/
 const MAX_WRONG_GUESSES = 3;
-const TIMER_START = 15;
+const TIMER_START = 20;
 const PAIRS_PER_GAME = 5;
+
+/*---------- Audio Elements ---------*/
+const correctSound = new Audio('sounds/correct.mp3');
+const wrongSound = new Audio('sounds/error.mp3');
+const winSound = new Audio('sounds/congratulations.mp3');
+const loseSound = new Audio('sounds/oh-no-crowd.mp3');
+const timeUpSound = new Audio('sounds/times_up.mp3');
+
+let soundEnabled = true;
 
 
 /*---------- Variables (state) ---------*/
@@ -85,6 +94,10 @@ const rightColumn = document.getElementById('right-column');
 const instructionsPopup = document.getElementById('instructions-popup');
 const closePopupButton = document.getElementById('close-popup');
 const helpButton = document.getElementById('help-button');
+const soundToggle = document.getElementById('sound-toggle');
+
+
+
 
 
 
@@ -100,7 +113,7 @@ function init() {
     secondSelection = null;
     matchedPairs = 0;
     wrongGuesses = 0;
-    timeRemaining = 15;
+    timeRemaining = 20;
 
     render();
 }
@@ -147,13 +160,16 @@ function render() {
         resultsScreen.style.display = 'block';
 
         if (matchedPairs === 5) {
+            playSound(winSound);
             resultsMessage.textContent = '🎉 ⭐ You Win! ⭐ 🎉';
             confetti({ shapes: ['star'] });
 
         } else if (timeRemaining === 0) {
+            playSound(timeUpSound);
             resultsMessage.textContent = "⏰ Time's Up!!! ⏰";
 
         } else if (wrongGuesses === 3) {
+            playSound(loseSound); 
             resultsMessage.textContent = '❌ ❌ ❌ Too Many Errors! ❌ ❌ ❌';
         }
     }
@@ -217,6 +233,7 @@ function checkMatch() {
     }
 
     if (isCorrect) {
+        playSound(correctSound);
         firstSelection.style.backgroundColor = '#90EE90';
         secondSelection.style.backgroundColor = '#90EE90';
         matchedPairs++;
@@ -233,6 +250,7 @@ function checkMatch() {
 
 
     } else {
+        playSound(wrongSound);
         firstSelection.style.backgroundColor = '#FFB6C1';
         secondSelection.style.backgroundColor = '#FFB6C1';
         wrongGuesses++;
@@ -253,6 +271,7 @@ function checkMatch() {
             secondSelection = null;
         }, 1000);
     }
+
 }
 
 function startTimer() {
@@ -275,6 +294,20 @@ function openInstructions() {
     instructionsPopup.style.display = 'flex';
 }
 
+function playSound(sound) {
+    if (soundEnabled) {
+        sound.volume = 0.3;
+        sound.play();
+    }
+}
+
+function toggleSound() {
+    soundEnabled = !soundEnabled;
+        soundToggle.textContent = soundEnabled ? 'MUTE' : 'UNMUTE';
+
+}
+
+
 
 
 /*----------- Event Listeners ----------*/
@@ -284,6 +317,8 @@ capitalsButton.addEventListener('click', handleCapitalsClick);
 resetButton.addEventListener('click', init);
 closePopupButton.addEventListener('click', closeInstructions);
 helpButton.addEventListener('click', openInstructions);
+soundToggle.addEventListener('click', toggleSound);
+
 
 
 init();
