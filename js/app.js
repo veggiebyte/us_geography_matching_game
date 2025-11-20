@@ -1,7 +1,7 @@
 
 /*-------------- Constants -------------*/
 const MAX_WRONG_GUESSES = 3;
-const TIMER_START = 20;
+const TIMER_START = 15;
 const PAIRS_PER_GAME = 5;
 
 
@@ -82,6 +82,9 @@ const errorsDisplay = document.getElementById('errors');
 const resultsMessage = document.getElementById('results-message');
 const leftColumn = document.getElementById('left-column');
 const rightColumn = document.getElementById('right-column');
+const instructionsPopup = document.getElementById('instructions-popup');
+const closePopupButton = document.getElementById('close-popup');
+const helpButton = document.getElementById('help-button');
 
 
 
@@ -97,7 +100,7 @@ function init() {
     secondSelection = null;
     matchedPairs = 0;
     wrongGuesses = 0;
-    timeRemaining = 20;
+    timeRemaining = 15;
 
     render();
 }
@@ -264,6 +267,14 @@ function startTimer() {
     }, 1000);
 }
 
+function closeInstructions() {
+    instructionsPopup.style.display = 'none';
+}
+
+function openInstructions() {
+    instructionsPopup.style.display = 'flex';
+}
+
 
 
 /*----------- Event Listeners ----------*/
@@ -271,5 +282,8 @@ function startTimer() {
 abbreviationsButton.addEventListener('click', handleAbbreviationsClick);
 capitalsButton.addEventListener('click', handleCapitalsClick);
 resetButton.addEventListener('click', init);
+closePopupButton.addEventListener('click', closeInstructions);
+helpButton.addEventListener('click', openInstructions);
+
 
 init();

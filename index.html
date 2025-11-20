@@ -16,11 +16,35 @@
 
 <body>
     <div id="container">
+<button id="help-button">?</button>
+        <div id="instructions-popup">
+            <div class="instructions-content">
+                <h1 class="box-title">
+                    <span class="box-title-main">USA Geography</span><br>
+                    <span class="box-title-sub">Matching Game</span>
+                </h1>
+
+                <h2>How to Play</h2>
+                <ol>
+                    <li>Choose a category: State Abbreviations or State Capitals</li>
+                    <li>Click a state name, then click its matching abbreviation or capital.</li>
+                    <li><strong style="color: #cc0000;">Be quick!</strong> You have <strong
+                            style="color: #2f4e82; text-decoration: underline;">15 seconds</strong> and
+                        <strong style="color: #2f4e82; text-decoration: underline;">3 wrong guesses.</strong>
+                    </li>
+                </ol>
+                <p>🟢 <span style="color: #008000; font-weight: bold;">Green</span> = Correct Match |
+                    ❌ <span style="color: #cc0000; font-weight: bold;">Red</span> = Wrong Match</p>
+                <button id="close-popup">Let's Play!</button>
+            </div>
+        </div>
 
         <h1>
             <span class="title-main">USA Geography</span><br>
             <span class="title-sub">Matching Game</span>
         </h1>
+
+
         <div class="usa-graphic">
             <img src="images/usa_outline.png" alt="USA outline" />
         </div>
