@@ -32,7 +32,7 @@ Inspired by the vocabulary matching exercises in Duolingo, the language learning
 - **CSS3** (Flexbox for layout)
 - **JavaScript** (DOM manipulation, event handling)
 - **Adobe Photoshop** (background image optimization)
-- **Adobe Illustrator** (USA map graphic)
+- **Adobe Illustrator** (USA map graphic and background license plates)
 
 ## Attributions
 
