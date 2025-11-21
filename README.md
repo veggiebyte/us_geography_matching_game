@@ -11,6 +11,8 @@ Inspired by the vocabulary matching exercises in Duolingo, the language learning
 
 🎮 [Play USA Geography Matching Game](https://veggiebyte.github.io/us_geography_matching_game/)
 
+![USA Geography Matching Game board screenshot](images/game_board.jpg)
+
 
 ## How to Play
 
