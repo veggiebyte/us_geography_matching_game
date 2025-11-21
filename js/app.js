@@ -97,13 +97,9 @@ const helpButton = document.getElementById('help-button');
 const soundToggle = document.getElementById('sound-toggle');
 
 
-
-
-
-
-
 /*-------------- Functions -------------*/
 function init() {
+    // Clear any existing timer to prevent multiple timers running
     if (timerInterval) {
         clearInterval(timerInterval);
     }
@@ -119,10 +115,13 @@ function init() {
 }
 
 function render() {
+    // Show category selection screen
     if (selectedCategory === null) {
         categoryScreen.style.display = 'block';
         gameBoard.style.display = 'none';
         resultsScreen.style.display = 'none';
+
+        // Show active game board
     } else if (selectedCategory !== null && matchedPairs < 5 && wrongGuesses < 3 && timeRemaining > 0) {
         categoryScreen.style.display = 'none';
         gameBoard.style.display = 'block';
@@ -135,9 +134,12 @@ function render() {
         leftColumn.innerHTML = '';
         rightColumn.innerHTML = '';
 
+        // Build array of answers based on selected category
         const rightValues = currentStates.map(state =>
             selectedCategory === 'abbreviations' ? state.abbr : state.capital
         );
+
+        // Shuffles right column so answers aren't in order
         const shuffledRight = rightValues.sort(() => Math.random() - 0.5);
 
         currentStates.forEach(state => {
@@ -154,6 +156,7 @@ function render() {
             rightColumn.appendChild(rightItem);
         });
 
+        // Shows results screen (win or lose)
     } else {
         categoryScreen.style.display = 'none';
         gameBoard.style.display = 'none';
@@ -169,13 +172,11 @@ function render() {
             resultsMessage.textContent = "⏰ Time's Up!!! ⏰";
 
         } else if (wrongGuesses === 3) {
-            playSound(loseSound); 
+            playSound(loseSound);
             resultsMessage.textContent = '❌ ❌ ❌ Too Many Errors! ❌ ❌ ❌';
         }
     }
 }
-
-
 
 
 function handleAbbreviationsClick() {
@@ -193,17 +194,20 @@ function handleCapitalsClick() {
 }
 
 function getRandomStates(num) {
+    // Shuffle all states and return the first 'num' states
     const shuffled = allStates.sort(() => Math.random() - 0.5);
     return shuffled.slice(0, num);
 }
 
 function handleItemClick() {
+    // Handle first selection
     if (firstSelection === null) {
         firstSelection = this;
         this.style.backgroundColor = '#d0d0d0';  // Gray it out
         return;
     }
 
+    // Handle second selection
     secondSelection = this;
     this.style.backgroundColor = '#d0d0d0';  // Gray this one out too
     checkMatch();
@@ -212,6 +216,7 @@ function handleItemClick() {
 function checkMatch() {
     let leftItem, rightItem;
 
+    // Will ensure leftItem is from left column and rightItem is from right column
     if (firstSelection.parentElement === leftColumn) {
         leftItem = firstSelection;
         rightItem = secondSelection;
@@ -220,11 +225,11 @@ function checkMatch() {
         rightItem = firstSelection;
     }
 
-
     const leftText = leftItem.textContent;
     const rightText = rightItem.textContent;
     const state = currentStates.find(s => s.name === leftText);
 
+    // Checks if the match is correct based on selected category
     let isCorrect = false;
     if (selectedCategory === 'abbreviations') {
         isCorrect = (rightText === state.abbr);
@@ -241,6 +246,7 @@ function checkMatch() {
         firstSelection = null;
         secondSelection = null;
 
+        // Checks for win condition
         if (matchedPairs === 5) {
             clearInterval(timerInterval);
             setTimeout(() => {
@@ -256,14 +262,16 @@ function checkMatch() {
         wrongGuesses++;
         errorsDisplay.textContent = `Wrong Answers: ${wrongGuesses}/${MAX_WRONG_GUESSES}`;
 
+        //Checks for loses after 3 wrong guesses
         if (wrongGuesses === 3) {
             clearInterval(timerInterval);
             setTimeout(() => {
                 render();
-            }, 1000);
+            }, 1000); //1000 is related to time it takes to fade
             return;
         }
 
+        // Helps reset colors after 1 second for wrong match
         setTimeout(() => {
             firstSelection.style.backgroundColor = '#f0f0f0';
             secondSelection.style.backgroundColor = '#f0f0f0';
@@ -303,11 +311,9 @@ function playSound(sound) {
 
 function toggleSound() {
     soundEnabled = !soundEnabled;
-        soundToggle.textContent = soundEnabled ? 'MUTE' : 'UNMUTE';
+    soundToggle.textContent = soundEnabled ? 'MUTE' : 'UNMUTE';
 
 }
-
-
 
 
 /*----------- Event Listeners ----------*/

@@ -5,7 +5,7 @@
 
 A fast-paced educational matching game where players test their knowledge of US state abbreviations and capitals. Choose a category, match 5 states with their correct answers, and race against a 20-second timer!
 
-I was inspired by Duolingo, the language learning app, vocabulary matching exercises. 
+Inspired by the vocabulary matching exercises in Duolingo, the language learning app.
 
 ## Play the Game
 
@@ -16,7 +16,6 @@ I was inspired by Duolingo, the language learning app, vocabulary matching exerc
 1. Choose between **State Abbreviations** or **State Capitals**
 2. Click a state name, then click its matching abbreviation or capital
 3. Match all 5 pairs correctly within **20 seconds** and with **3 or fewer wrong guesses**
-4. Green = correct match, Red = wrong match
 5. Click "Play Again" to try a new set of random states!
 
 ## Planning Materials
