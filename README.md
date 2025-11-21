@@ -1,12 +1,11 @@
 # USA Geography Matching Game
 
-![Game Screenshot](readme_screenshot.jpg)
-
+![USA Geography Matching Game screenshot](images/readme_screenshot.jpg)
 ## Description
 
 A fast-paced educational matching game where players test their knowledge of US state abbreviations and capitals. Choose a category, match 5 states with their correct answers, and race against a 20-second timer!
 
-Inspired by Duolingo's vocabulary matching exercises.
+I was inspired by Duolingo, the language learning app, vocabulary matching exercises. 
 
 ## Play the Game
 
@@ -22,8 +21,7 @@ Inspired by Duolingo's vocabulary matching exercises.
 
 ## Planning Materials
 
-- [Initial Wireframe & User Stories](Project_1_plan.pdf)
-- [Pseudocode](pseudocode.txt)
+- [Initial Wireframe, User Stories and Pseudocode](images/planning_info.pdf)
 
 ## Technologies Used
 
@@ -36,12 +34,12 @@ Inspired by Duolingo's vocabulary matching exercises.
 ## Attributions
 
 ### Fonts
-- [Georgia](https://fonts.google.com/) - Google Fonts
+- Georgia - Standard system font
 - [Timmana](https://fonts.google.com/specimen/Timmana) - Google Fonts  
 - [Electrolize](https://fonts.google.com/specimen/Electrolize) - Google Fonts
 
 ### Images
-- Vintage license plate background - [DepositPhotos](https://depositphotos.com/)
+- Vintage license plate background - (many individual photos downloaded to create background [DepositPhotos](https://depositphotos.com/)
 - USA map outline - [DepositPhotos](https://depositphotos.com/)
 
 ### Sound Effects
@@ -55,7 +53,8 @@ Inspired by Duolingo's vocabulary matching exercises.
 - [MDN Web Docs](https://developer.mozilla.org/) - JavaScript fundamentals, DOM manipulation, Audio API
 - [W3Schools](https://www.w3schools.com/) - CSS Flexbox tutorials
 - [Canvas Confetti Documentation](https://www.npmjs.com/package/canvas-confetti) - Confetti implementation
-- General Assembly lesson materials - Event handling, game logic structure
+- General Assembly lesson materials - Functions, Event handling, game logic structure
+- General google searches
 
 ## Features
 
