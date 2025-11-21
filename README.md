@@ -11,11 +11,13 @@ Inspired by the vocabulary matching exercises in Duolingo, the language learning
 
 🎮 [Play USA Geography Matching Game](https://veggiebyte.github.io/us_geography_matching_game/)
 
+
 ## How to Play
 
 1. Choose between **State Abbreviations** or **State Capitals**
 2. Click a state name, then click its matching abbreviation or capital
 3. Match all 5 pairs correctly within **20 seconds** and with **3 or fewer wrong guesses**
+4. <span style="color: #00cc00;">**Green**</span> = correct match, <span style="color: #cc0000;">**Red**</span> = wrong match
 5. Click "Play Again" to try a new set of random states!
 
 ## Planning Materials
@@ -38,7 +40,7 @@ Inspired by the vocabulary matching exercises in Duolingo, the language learning
 - [Electrolize](https://fonts.google.com/specimen/Electrolize) - Google Fonts
 
 ### Images
-- Vintage license plate background - (many individual photos downloaded to create background [DepositPhotos](https://depositphotos.com/)
+- Vintage license plate background - many individual photos downloaded to create background [DepositPhotos](https://depositphotos.com/)
 - USA map outline - [DepositPhotos](https://depositphotos.com/)
 
 ### Sound Effects
@@ -53,7 +55,7 @@ Inspired by the vocabulary matching exercises in Duolingo, the language learning
 - [W3Schools](https://www.w3schools.com/) - CSS Flexbox tutorials
 - [Canvas Confetti Documentation](https://www.npmjs.com/package/canvas-confetti) - Confetti implementation
 - General Assembly lesson materials - Functions, Event handling, game logic structure
-- General google searches
+- General Google searches
 
 ## Features
 
